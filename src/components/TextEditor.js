@@ -31,6 +31,8 @@ function TextEditor() {
     function handleContentChange(e) {
       const value = e.target.value;
 
+      setContent(value);
+
       socket.current.emit("content", value);
     }
 
@@ -42,6 +44,10 @@ function TextEditor() {
         <label htmlFor="content-field">Innehåll</label>
         <textarea id="content-field" value={content} onChange={handleContentChange}></textarea>
 
+        <button id="create-document-btn" onClick={clear}>Skapa Dokument</button>
+
+        <br></br>
+
         <button id="print-message" onClick={clear}>Rensa</button>
 
         <div id="output-container">
@@ -51,5 +57,5 @@ function TextEditor() {
       </>
     );
   }
-  
+
   export default TextEditor;
